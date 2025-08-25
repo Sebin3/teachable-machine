@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachable Machine - AI Recognition Platform</title>
+    <meta name="description" content="Plataforma profesional de reconocimiento de IA con audio, objetos y posturas corporales">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <h1>Teachable Machine</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#audio" class="nav-link">
+                        <i class="fas fa-microphone"></i>
+                        Audio
+                    </a>
+                    <a href="#objects" class="nav-link">
+                        <i class="fas fa-camera"></i>
+                        Objetos
+                    </a>
+                    <a href="#poses" class="nav-link">
+                        <i class="fas fa-running"></i>
+                        Posturas
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2 class="hero-title">Reconocimiento de IA Avanzado</h2>
+                    <p class="hero-description">
+                        Experimenta con modelos de machine learning para reconocimiento de audio, 
+                        detección de objetos y análisis de posturas corporales en tiempo real.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Audio Classification Section -->
+            <section id="audio" class="section audio-section">
+                <div class="section-header">
+                    <div class="section-icon audio-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="section-info">
+                        <h3 class="section-title">Reconocimiento de Audio</h3>
+                        <p class="section-description">
+                            Clasifica sonidos y voces en tiempo real usando modelos de aprendizaje automático
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="section-content">
+                    <div class="controls-panel">
+                        <button id="audioBtn" class="control-btn audio-btn" data-state="ready">
+                            <i class="fas fa-microphone"></i>
+                            <span class="btn-text">Iniciar Grabación</span>
+                            <div class="btn-loader"></div>
+                        </button>
+                        <div class="status-indicator">
+                            <div class="status-dot"></div>
+                            <span id="audioStatus" class="status-text">Listo para grabar</span>
+                        </div>
+                    </div>
+                    
+                    <div class="results-panel">
+                        <div class="audio-visualizer">
+                            <canvas id="audioCanvas" width="300" height="100"></canvas>
+                        </div>
+                        <div id="audioPredictions" class="predictions-container">
+                            <div class="predictions-placeholder">
+                                <i class="fas fa-waveform-lines"></i>
+                                <p>Las predicciones aparecerán aquí</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Object Detection Section -->
+            <section id="objects" class="section objects-section">
+                <div class="section-header">
+                    <div class="section-icon objects-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="section-info">
+                        <h3 class="section-title">Detección de Objetos</h3>
+                        <p class="section-description">
+                            Identifica y clasifica objetos en tiempo real a través de la cámara
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="section-content">
+                    <div class="controls-panel">
+                        <button id="objectsBtn" class="control-btn objects-btn" data-state="ready">
+                            <i class="fas fa-camera"></i>
+                            <span class="btn-text">Activar Cámara</span>
+                            <div class="btn-loader"></div>
+                        </button>
+                        <div class="status-indicator">
+                            <div class="status-dot"></div>
+                            <span id="objectsStatus" class="status-text">Listo para detectar</span>
+                        </div>
+                    </div>
+                    
+                    <div class="results-panel">
+                        <div class="camera-container">
+                            <video id="objectsVideo" class="camera-feed" autoplay muted playsinline></video>
+                            <canvas id="objectsCanvas" class="detection-overlay"></canvas>
+                        </div>
+                        <div id="objectsPredictions" class="predictions-container">
+                            <div class="predictions-placeholder">
+                                <i class="fas fa-search"></i>
+                                <p>Los objetos detectados aparecerán aquí</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pose Recognition Section -->
+            <section id="poses" class="section poses-section">
+                <div class="section-header">
+                    <div class="section-icon poses-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="section-info">
+                        <h3 class="section-title">Reconocimiento de Posturas (Rostro,  etc)</h3>
+                        <p class="section-description">
+                            Analiza y clasifica posturas corporales y movimientos en tiempo real
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="section-content">
+                    <div class="controls-panel">
+                        <button id="posesBtn" class="control-btn poses-btn" data-state="ready">
+                            <i class="fas fa-video"></i>
+                            <span class="btn-text">Iniciar Análisis</span>
+                            <div class="btn-loader"></div>
+                        </button>
+                        <div class="status-indicator">
+                            <div class="status-dot"></div>
+                            <span id="posesStatus" class="status-text">Listo para analizar</span>
+                        </div>
+                    </div>
+                    
+                    <div class="results-panel">
+                        <div class="camera-container">
+                            <video id="posesVideo" class="camera-feed" autoplay muted playsinline></video>
+                            <canvas id="posesCanvas" class="pose-overlay"></canvas>
+                        </div>
+                        <div id="posesPredictions" class="predictions-container">
+                            <div class="predictions-placeholder">
+                                <i class="fas fa-user"></i>
+                                <p>Las posturas detectadas aparecerán aquí</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Notification System -->
+    <div id="notifications" class="notifications-container"></div>
+
+    <!-- TensorFlow.js and Teachable Machine Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+    
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/audio-model.js"></script>
+    <script src="js/object-model.js"></script>
+    <script src="js/pose-model.js"></script>
+</body>
+</html>
